@@ -16,6 +16,7 @@ RSpec.describe 'メッセージ投稿機能', type: :system do
 
       # DBに保存されていないことを確認する
       expect {
+       
         find('input[name="commit"]').click
       }.not_to change { Message.count }
       # 元のページに戻ってくることを確認する
@@ -36,6 +37,7 @@ RSpec.describe 'メッセージ投稿機能', type: :system do
       fill_in 'message_content', with: post
       # 送信した値がDBに保存されていることを確認する
       expect {
+        binding.pry
         find('input[name="commit"]').click
       }.to change { Message.count }.by(1)
       # 投稿一覧画面に遷移していることを確認する
